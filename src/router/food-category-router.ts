@@ -1,5 +1,4 @@
 import express, { Request, Response } from "express";
-import FoodCategory from "../model/category-food-model";
 import { createFoodCategory } from "../contoller/foodCategory/create-food-category";
 import { getFoodCategories } from "../contoller/foodCategory/category-get-food";
 import { categoryDeleteFood } from "../contoller/foodCategory/category-delete-food-byId";

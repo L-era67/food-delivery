@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
- const categoryFoodSchema = new Schema(
+const categoryFoodSchema = new Schema(
   { categoryName: { type: String, default: require } },
   { timestamps: true }
 );

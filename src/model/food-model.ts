@@ -1,6 +1,15 @@
 import { model, Schema } from "mongoose";
 
-const foodSchema = new Schema(
+
+export type FoodSchemaType = {
+  foodName: string;
+  price: string;
+  image: string;
+  ingredients: string;
+  categoryId: Schema.Types.ObjectId;
+};
+
+const foodSchema = new Schema<FoodSchemaType>(
   {
     foodName: { type: String, required: true },
     price: { type: String, required: true },
@@ -16,4 +25,4 @@ const foodSchema = new Schema(
   { timestamps: true }
 );
 
-export const Food = model("Food", foodSchema);
+export const Food = model<FoodSchemaType>("Food", foodSchema);

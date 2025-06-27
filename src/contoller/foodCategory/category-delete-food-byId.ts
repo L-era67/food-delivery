@@ -1,4 +1,4 @@
-import FoodCategory from "../../model/category-food-model";
+import {FoodCategory }from "../../model/category-food-model";
 import express, {Request, Response} from "express";
 
 

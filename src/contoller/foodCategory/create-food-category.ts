@@ -1,8 +1,8 @@
-import FoodCategory from "../../model/category-food-model";
 import express, {Request, Response} from "express";
+import { categoryFoodSchemaType, FoodCategory } from "../../model/category-food-model";
 
 export const createFoodCategory =async (req: Request, res: Response) => {
-  const { categoryName } = req.body;
+  const { categoryName } :categoryFoodSchemaType = req.body;
 
   try {
     const response = new FoodCategory({

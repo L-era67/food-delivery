@@ -1,5 +1,5 @@
-import FoodCategory from "../../model/category-food-model";
 import express, { Request, Response } from "express";
+import { FoodCategory } from "../../model/category-food-model";
 
 export const createFoodUpdate = async (req: Request, res: Response) => {
   const { id } = req.params;

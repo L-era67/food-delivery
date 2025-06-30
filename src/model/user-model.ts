@@ -23,9 +23,9 @@ const userSchema = new Schema<userSchemaType>(
     phoneNumber: { type: String, required: true },
     address: { type: String, required: true },
     role:{type:String, enum:Object.values(UserRoleEnum), default:UserRoleEnum.USER}, //default utga erun shaardalgatai yumuu doooo ESWEL USER CH YUMUU
-    orderedFoods: { type: [Schema.Types.ObjectId], required: true },
+    orderedFoods: { type: [Schema.Types.ObjectId],ref:"FoodOrder", require: true },
     ttl: { type: Date, required: true },
-    isVerified: { type: Boolean, required: true },
+    isVerified: { type: Boolean, require: true },
   },
 
   { timestamps: true }

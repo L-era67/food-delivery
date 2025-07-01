@@ -14,11 +14,12 @@ export const createFoodOrder = async (req: Request, res: Response) => {
   const { foodOrderItems }: foodItemOrderType = req.body;
 
   const totalPrice = await calculateTotalPrice(foodOrderItems);
+  
 
   console.log(foodOrderItems);
 
   try {
-    const response = new FoodOrder({ foodOrderItems, totalPrice });
+    const response = new FoodOrder({ foodOrderItems , totalPrice});
 
     await response.save();
     console.log("FOODORDER ITEMS:", response);
@@ -29,16 +30,22 @@ export const createFoodOrder = async (req: Request, res: Response) => {
   }
 };
 
+
 const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
+
   const priceFoods = await Promise.all(
     foodOrderItems.map(async (foodOrderItem) => {
-      const food = await getFoodByFoodId(foodOrderItem?.food._id);
+
+      const food = await getFoodByFoodId(foodOrderItem?.food);
 
       if (!food?.price) return 0;
+      console.log(food?.price);
 
       return currency(food?.price).multiply(foodOrderItem?.quantity).value;
     })
   );
+  console.log("priceFOODS:", priceFoods);
+  
   const TotalPrice = priceFoods.reduce(
     (acc, curr) => currency(acc).add(curr).value,
     0
@@ -47,6 +54,18 @@ const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
   return TotalPrice;
 };
 
+
 const getFoodByFoodId = async (foodId: Schema.Types.ObjectId) => {
   return await Food.findById(foodId);
 };
+
+// let totalPrice = 0
+// for(let i = 0; i<=foodOrderItems.length; i++){
+//   let item = foodOrderItems[i];
+
+//   const food = await getFoodByFoodId(item.food);
+
+//   if(!food?.price) return 0;
+
+//   totalPrice += currency(food?.price).multiply(item?.quantity).value
+// }

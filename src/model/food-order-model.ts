@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { Model, model, Schema } from "mongoose";
 import { FoodSchemaType } from "./food-model";
 
 enum orderStatus {
@@ -13,7 +13,7 @@ enum orderStatus {
 // console.log("VALUE AWAH 2 index-r awch baina:", orderStatus.CANCELED);
 
 export type FoodOrderItemType = {
-  food: FoodSchemaType; //tsaanaa id-r damjij i
+  food: Schema.Types.ObjectId;
   quantity: number; //Number gej bichher calculate(foodorderitem.quatity err)
   price: number;
 };
@@ -22,7 +22,7 @@ const orderItemSchema = new Schema<FoodOrderItemType>(
   {
     food: { type: Schema.Types.ObjectId, ref: "Food", required: true },
     quantity: { type: Number, required: true },
-    price: {type:Number, required:true}
+
   },
   { _id: false }
 );
@@ -42,3 +42,5 @@ const foodOrderSchema = new Schema(
 );
 
 export const FoodOrder = model("FoodOrder", foodOrderSchema);
+
+

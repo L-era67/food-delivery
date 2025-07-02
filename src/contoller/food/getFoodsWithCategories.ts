@@ -6,7 +6,7 @@ export const getFoodsWithCategories = async (req: Request, res: Response) => {
     const response = await Food.aggregate([
       {
         $lookup: {
-          from: "foodCategories",
+          from: "foodcategories",
           localField: "categoryId",
           foreignField: "_id",
           as: "categoryDetails",

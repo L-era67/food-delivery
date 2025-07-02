@@ -8,26 +8,20 @@ import currency from "currency.js";
 type foodItemOrderType = {
   foodOrderItems: FoodOrderItemType[];
   totalPrice: number;
+  userId:string;
 };
 
 export const createFoodOrder = async (req: Request, res: Response) => {
-  const { foodOrderItems }: foodItemOrderType = req.body;
+  const { foodOrderItems,userId }: foodItemOrderType = req.body;
 
-<<<<<<< HEAD
-  // const totalPrice = await calculateTotalPrice(foodOrderItems);
-=======
   const totalPrice = await calculateTotalPrice(foodOrderItems);
   
->>>>>>> origin/main
-
   console.log(foodOrderItems);
 
   try {
-<<<<<<< HEAD
-    const response = new FoodOrder({ foodOrderItems });
-=======
-    const response = new FoodOrder({ foodOrderItems , totalPrice});
->>>>>>> origin/main
+
+    const response = new FoodOrder({ foodOrderItems , totalPrice, userId});
+
 
     await response.save();
     console.log("FOODORDER ITEMS:", response);
@@ -38,22 +32,7 @@ export const createFoodOrder = async (req: Request, res: Response) => {
   }
 };
 
-<<<<<<< HEAD
-// const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
-//   const priceFoods = await Promise.all(
-//     foodOrderItems.map(async (foodOrderItem) => {
-//       const food = await getFoodByFoodId(foodOrderItem?.food);
 
-//       if (!food?.price) return 0;
-
-//       return currency(food?.price).multiply(foodOrderItem?.quantity).value;
-//     })
-//   );
-//   const TotalPrice = priceFoods.reduce(
-//     (acc, curr) => currency(acc).add(curr).value,
-//     0
-//   );
-=======
 
 const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
 
@@ -74,16 +53,11 @@ const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
     (acc, curr) => currency(acc).add(curr).value,
     0
   );
->>>>>>> origin/main
 
-//   return TotalPrice;
-// };
 
-<<<<<<< HEAD
-// const getFoodByFoodId = async (foodId: Schema.Types.ObjectId) => {
-//   return await Food.findById(foodId);
-// };
-=======
+  return TotalPrice;
+};
+
 
 const getFoodByFoodId = async (foodId: Schema.Types.ObjectId) => {
   return await Food.findById(foodId);
@@ -99,4 +73,4 @@ const getFoodByFoodId = async (foodId: Schema.Types.ObjectId) => {
 
 //   totalPrice += currency(food?.price).multiply(item?.quantity).value
 // }
->>>>>>> origin/main
+

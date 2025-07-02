@@ -5,7 +5,7 @@ export type categoryFoodSchemaType ={
 }
 
 const categoryFoodSchema = new Schema<categoryFoodSchemaType>(
-  { categoryName: { type: String, default: require } },
+  { categoryName: { type: String, required:true } },
   { timestamps: true }
 );
 

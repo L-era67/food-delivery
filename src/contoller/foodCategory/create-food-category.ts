@@ -3,6 +3,8 @@ import { categoryFoodSchemaType, FoodCategory } from "../../model/category-food-
 
 export const createFoodCategory =async (req: Request, res: Response) => {
   const { categoryName } :categoryFoodSchemaType = req.body;
+  console.log("BODY:", req.body);
+  
 
   try {
     const response = new FoodCategory({

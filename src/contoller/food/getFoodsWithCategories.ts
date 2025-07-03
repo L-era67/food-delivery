@@ -32,9 +32,9 @@ export const getFoodsWithCategories = async (req: Request, res: Response) => {
               ingredients: "$ingredients",
             },
           },
+          // count: { $count: "foods" },
         },
       },
-      
     ]);
 
     console.log("LOOK UP:", response);

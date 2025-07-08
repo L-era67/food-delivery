@@ -45,5 +45,3 @@ const foodOrderSchema = new Schema(
 );
 
 export const FoodOrder = model("FoodOrder", foodOrderSchema);
-
-

@@ -19,9 +19,7 @@ export const createFoodOrder = async (req: Request, res: Response) => {
   console.log(foodOrderItems);
 
   try {
-
     const response = new FoodOrder({ foodOrderItems , totalPrice, userId});
-
 
     await response.save();
     console.log("FOODORDER ITEMS:", response);

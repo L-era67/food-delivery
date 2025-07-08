@@ -11,7 +11,7 @@ import foodOrder from "./router/food-order-router";
 import user from "./router/user-router";
 
 const app = express();
-const port = 3000;
+const port = 4200;
 
 app.use(express.json());
 app.use(cors())

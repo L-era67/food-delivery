@@ -32,7 +32,7 @@ const orderItemSchema = new Schema<FoodOrderItemType>(
 
 const foodOrderSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User", require: true }, //UUNIIG SHUUD PARAM BODY BISH "JSON TOKEN" BOLGOJ AWAAD TUUNIIG TAILJ UNSHIN
+    userId: { type: Schema.Types.ObjectId, ref: "User", require: true }, // UUNIIG SHUUD PARAM BODY BISH "JSON TOKEN" BOLGOJ AWAAD TUUNIIG TAILJ UNSHIN
     totalPrice: { type: Number, require: true }, // API-S PRICE AWAAD NEMEH NI ERSDELTEI UCHIR BUH ORDER ITEM IRSNII DARAA NIIT TOTALPRICE BODOJ GARGAH HEREGETEI
     status: {
       type: String,

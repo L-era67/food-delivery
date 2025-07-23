@@ -11,7 +11,7 @@ type userSchemaType = {
   phoneNumber: string;
   address: string;
   orderedFoods: Schema.Types.ObjectId[];
-  ttl: Date;
+  // ttl: Date;
   isVerified: boolean;
   role: string;
 };
@@ -32,7 +32,7 @@ const userSchema = new Schema<userSchemaType>(
       ref: "FoodOrder",
       require: true,
     },
-    ttl: { type: Date, required: true },
+    // ttl: { type: Date, required: true },
     isVerified: { type: Boolean, require: true },
   },
 

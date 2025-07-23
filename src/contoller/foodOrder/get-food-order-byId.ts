@@ -5,7 +5,7 @@ export const getFoodOrderById = async (req: Request, res: Response) => {
   const { userId } = req.params;
 
   try {
-    const response = await FoodOrder.findOne({ userId: userId }).populate({
+    const response = await FoodOrder.find({ userId:userId }).populate({ //findOne vs find
       path:"foodOrderItems",
       populate:{
         path:"food"

@@ -13,14 +13,12 @@ type foodItemOrderType = {
 export const createFoodOrder = async (req: Request, res: Response) => {
   const { foodOrderItems,userId }: foodItemOrderType = req.body;
 
-  const totalPrice = await calculateTotalPrice(foodOrderItems);
+  // const totalPrice = await calculateTotalPrice(foodOrderItems);
   
   console.log(foodOrderItems);
 
   try {
-
-    const response = new FoodOrder({ foodOrderItems , totalPrice, userId});
-
+    const response = new FoodOrder({ foodOrderItems , userId});
 
     await response.save();
     console.log("FOODORDER ITEMS:", response);
@@ -33,34 +31,34 @@ export const createFoodOrder = async (req: Request, res: Response) => {
 
 
 
-const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
+// const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
 
-  const priceFoods = await Promise.all(
-    foodOrderItems.map(async (foodOrderItem) => {
+//   const priceFoods = await Promise.all(
+//     foodOrderItems.map(async (foodOrderItem) => {
 
-      const food = await getFoodByFoodId(foodOrderItem?.food);
+//       const food = await getFoodByFoodId(foodOrderItem?.food);
 
-      if (!food?.price) return 0;
-      console.log(food?.price);
+//       if (!food?.price) return 0;
+//       console.log(food?.price);
 
-      return currency(food?.price).multiply(foodOrderItem?.quantity).value;
-    })
-  );
-  console.log("priceFOODS:", priceFoods);
+//       return currency(food?.price).multiply(foodOrderItem?.quantity).value;
+//     })
+//   );
+//   console.log("priceFOODS:", priceFoods);
   
-  const TotalPrice = priceFoods.reduce(
-    (acc, curr) => currency(acc).add(curr).value,
-    0
-  );
+//   const TotalPrice = priceFoods.reduce(
+//     (acc, curr) => currency(acc).add(curr).value,
+//     0
+//   );
 
 
-  return TotalPrice;
-};
+//   return TotalPrice;
+// };
 
 
-const getFoodByFoodId = async (foodId: Schema.Types.ObjectId) => {
-  return await Food.findById(foodId);
-};
+// const getFoodByFoodId = async (foodId: Schema.Types.ObjectId) => {
+//   return await Food.findById(foodId);
+// };
 
 // let totalPrice = 0
 // for(let i = 0; i<=foodOrderItems.length; i++){

@@ -13,11 +13,9 @@ enum orderStatus {
 // console.log("VALUE AWAH 2 index-r awch baina:", orderStatus.CANCELED);
 
 export type FoodOrderItemType = {
-
   food: Schema.Types.ObjectId; //tsaanaa id-r damjij i
-
   quantity: number; //Number gej bichher calculate(foodorderitem.quatity err)
-  price: number;
+  // price: number;
 };
 
 const orderItemSchema = new Schema<FoodOrderItemType>(

@@ -7,29 +7,27 @@ import currency from "currency.js";
 type foodItemOrderType = {
   foodOrderItems: FoodOrderItemType[];
   totalPrice: number;
-  userId:string;
+  userId: string;
 };
 
 export const createFoodOrder = async (req: Request, res: Response) => {
-  const { foodOrderItems,userId }: foodItemOrderType = req.body;
+  const { foodOrderItems, userId, totalPrice }: foodItemOrderType = req.body;
 
   // const totalPrice = await calculateTotalPrice(foodOrderItems);
-  
+
   console.log(foodOrderItems);
 
   try {
-    const response = new FoodOrder({ foodOrderItems , userId});
+    const response = new FoodOrder({ foodOrderItems, userId, totalPrice});
 
     await response.save();
     console.log("FOODORDER ITEMS:", response);
 
     res.status(200).send({ success: true, response });
   } catch (error) {
-    res.status(400).send({ success: false, message: "error" });
+    res.status(400).send({ success: false, message: "create food order error" });
   }
 };
-
-
 
 // const calculateTotalPrice = async (foodOrderItems: FoodOrderItemType[]) => {
 
@@ -45,16 +43,14 @@ export const createFoodOrder = async (req: Request, res: Response) => {
 //     })
 //   );
 //   console.log("priceFOODS:", priceFoods);
-  
+
 //   const TotalPrice = priceFoods.reduce(
 //     (acc, curr) => currency(acc).add(curr).value,
 //     0
 //   );
 
-
 //   return TotalPrice;
 // };
-
 
 // const getFoodByFoodId = async (foodId: Schema.Types.ObjectId) => {
 //   return await Food.findById(foodId);
@@ -70,4 +66,3 @@ export const createFoodOrder = async (req: Request, res: Response) => {
 
 //   totalPrice += currency(food?.price).multiply(item?.quantity).value
 // }
-

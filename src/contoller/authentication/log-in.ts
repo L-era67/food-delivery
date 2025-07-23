@@ -8,8 +8,14 @@ export const getUsers = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ email });
 
-    const isMatch = await bcrypt.compare(password, user?.password!); //true & false BOL BOOLEAN UTGA IRNE
+    // const isMatch = await bcrypt.compare(password, user?.password!); //true & false BOL BOOLEAN UTGA IRNE
 
+    if (!user) {
+      res.status(400).json({ message: "try again" });
+      return;
+    }
+
+    const isMatch = await bcrypt.compare(password, user?.password);
     console.log("isMatch:", isMatch);
 
     if (isMatch) {

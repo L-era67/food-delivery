@@ -26,7 +26,7 @@ const userSchema = new Schema<userSchemaType>(
       type: String,
       enum: Object.values(UserRoleEnum),
       default: UserRoleEnum.USER,
-    }, //default utga erun shaardalgatai yumuu doooo ESWEL USER CH YUMUU
+    },
     orderedFoods: {
       type: [Schema.Types.ObjectId],
       ref: "FoodOrder",

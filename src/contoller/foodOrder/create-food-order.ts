@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { FoodOrder, FoodOrderItemType } from "../../model/food-order-model";
-import food from "../../router/food-router";
 import { Schema } from "mongoose";
 import { Food } from "../../model/food-model";
 import currency from "currency.js";

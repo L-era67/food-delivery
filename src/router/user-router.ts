@@ -1,5 +1,5 @@
 import express from "express";
-import { createUser } from "../contoller/authentication/sign-up";
+import { createUser } from "../contoller/authentication/register";
 import { getUsers } from "../contoller/authentication/get-users";
 import { deleteuser } from "../contoller/authentication/delete-user";
 

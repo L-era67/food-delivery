@@ -27,11 +27,11 @@ const userSchema = new Schema<userSchemaType>(
       enum: Object.values(UserRoleEnum),
       default: UserRoleEnum.USER,
     },
-    orderedFoods: {
-      type: [Schema.Types.ObjectId],
-      ref: "FoodOrder",
-      require: true,
-    },
+    // orderedFoods: {
+    //   type: [Schema.Types.ObjectId],
+    //   ref: "FoodOrder",
+    //   require: true,
+    // },
     // ttl: { type: Date, required: true },
     isVerified: { type: Boolean, require: true },
   },

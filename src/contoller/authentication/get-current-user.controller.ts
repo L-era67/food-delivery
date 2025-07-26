@@ -3,16 +3,19 @@ import jwt from "jsonwebtoken";
 import { User } from "../../model/user-model";
 
 export const getCurrentUser = async (req: Request, res: Response) => {
-
-  const authHeader = req.headers.authorization;
-  console.log("authHeader: ", authHeader);
-
-  const tokenToString = authHeader?.split(" ")[1] || "";
-  console.log("tokenTostring:", tokenToString);
-
   try {
+    const authHeader = req.headers.authorization;
+    console.log("authHeader: ", authHeader);
+
+    if(!authHeader || !authHeader.startsWith("Bearer ")){
+      res.status(401).json({message:"Autherization token is required."});
+      return;
+    }
+
+    const tokenToString = authHeader?.split(" ")[1] || "";
+
     const secret = "WTF-SECRET-PASSWORD";
-    
+
     const isVerified = jwt.verify(tokenToString, secret) as jwt.JwtPayload;
     console.log("isVerified: ", isVerified?.userData);
 

@@ -5,13 +5,13 @@ import { getFoodById } from "../contoller/food/get-food-byId";
 import { deleteFoodByid } from "../contoller/food/delete-food-byId";
 import { updateFood } from "../contoller/food/update-food-byId";
 import { getFoodsWithCategories } from "../contoller/food/getFoodsWithCategories";
-
+import { checkAuthRole } from "../middleware/checkAuthRole";
 
 const food = express.Router();
 
-food.get("/getFoodsWithCategories", getFoodsWithCategories)
+food.get("/getFoodsWithCategories", getFoodsWithCategories);
 
-food.post("/", createFood);
+food.post("/", checkAuthRole, createFood);
 
 food.get("/", getFood);
 

@@ -2,6 +2,9 @@ import { Request, Response } from "express";
 import { Food, FoodSchemaType } from "../../model/food-model";
 
 export const createFood = async (req: Request, res: Response) => {
+  // const authHeader = req.headers.authorization || "";
+  // console.log("post food auth header: ", authHeader);
+  
   const { foodName, price, image, ingredients, categoryId }:FoodSchemaType = req.body;
 
   console.log("req, body FOOD:", req.body);

@@ -31,9 +31,9 @@ export const getUsers = async (req: Request, res: Response) => {
       const accessToken = jwt.sign({ exp: hour, userData }, secret);
       res.status(200).send({ success: true, accessToken });
     } else {
-      res.status(400).json({ message: "try again" });
+      res.status(400).json({ message: "Email and password invalid" });
     }
   } catch (error) {
-    res.status(400).send({ success: false, message: "error" });
+    res.status(500).send({ success: false, error });
   }
 };

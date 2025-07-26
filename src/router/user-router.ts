@@ -8,6 +8,7 @@ import { deleteuser } from "../contoller/authentication/delete-user";
 import { getAllUser } from "../contoller/authentication/getAllUser";
 import { getCurrentUser } from "../contoller/authentication/get-current-user.controller";
 import { resetPassword } from "../contoller/authentication/reset-password.controller";
+// import { verifyToken } from "../middleware/verifyToken";
 
 const user = express.Router();
 
@@ -21,6 +22,6 @@ user.get("/", getAllUser);
 
 user.get("/get-current-user", getCurrentUser);
 
-user.post("/reset-password", resetPassword)
+user.post("/reset-password", resetPassword);
 
 export default user;
